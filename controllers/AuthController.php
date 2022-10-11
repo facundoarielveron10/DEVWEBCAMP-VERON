@@ -33,6 +33,13 @@ class AuthController {
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['admin'] = $usuario->admin ?? null;
+
+                        // Redireccionamos a los ADMIN y a los NO ADMIN
+                        if($usuario->admin) {
+                            header('Location: /admin/dashboard');
+                        } else {
+                            header('Location: /finalizar-registro');
+                        }
                         
                     } else {
                         Usuario::setAlerta('error', 'Password Incorrecto');
@@ -154,12 +161,14 @@ class AuthController {
     }
 
     public static function reestablecer(Router $router) {
+        // Mostrasmos alerta de reestablecida
+        $reestablecida = false;
 
         $token = s($_GET['token']);
 
         $token_valido = true;
 
-        if(!$token) header('Location: /');
+        if(!$token) header('Location: /login');
 
         // Identificar el usuario con este token
         $usuario = Usuario::where('token', $token);
@@ -171,7 +180,6 @@ class AuthController {
 
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // Añadir el nuevo password
             $usuario->sincronizar($_POST);
 
@@ -190,7 +198,10 @@ class AuthController {
 
                 // Redireccionar
                 if($resultado) {
-                    header('Location: /');
+                    // Ponemos reestablecida en true
+                    $reestablecida = true;
+                    // Guardamos la alerta
+                    Usuario::setAlerta('exito', 'Cuenta reestablecida correctamente');
                 }
             }
         }
@@ -201,7 +212,8 @@ class AuthController {
         $router->render('auth/reestablecer', [
             'titulo' => 'Reestablecer Password',
             'alertas' => $alertas,
-            'token_valido' => $token_valido
+            'token_valido' => $token_valido,
+            'reestablecida' => $reestablecida
         ]);
     }
 
@@ -213,7 +225,7 @@ class AuthController {
     }
 
     public static function confirmar(Router $router) {
-        
+        $confirmado = false;
         $token = s($_GET['token']);
 
         if(!$token) header('Location: /');
@@ -234,13 +246,15 @@ class AuthController {
             $usuario->guardar();
 
             Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
+            $confirmado = true;
         }
 
      
 
         $router->render('auth/confirmar', [
             'titulo' => 'Confirma tu cuenta DevWebcamp',
-            'alertas' => Usuario::getAlertas()
+            'alertas' => Usuario::getAlertas(),
+            'confirmado' => $confirmado
         ]);
     }
 }

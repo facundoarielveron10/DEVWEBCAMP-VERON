@@ -3,9 +3,10 @@
     <!-- Titulo y Descripcion -->
     <h2 class="auth__heading"><?php echo $titulo ?></h2>
     <p class="auth__texto">Inicia sesion en DevWebCamp</p>
-
+    <!-- Alertas -->
+    <?php include_once __DIR__ . '/../templates/alertas.php'; ?>
     <!-- Formulario -->
-    <form class="formulario">
+    <form class="formulario" method="POST" action="/login">
         <!-- Email -->
         <div class="formulario__campo">
             <label class="formulario__label" for="email">Email</label>

@@ -411,6 +411,23 @@ h3 {
   font-size: 1.4rem;
   font-weight: 300;
 }
+.acciones__confirmado {
+  background-color: #007df4;
+  padding: 1.5rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+.acciones__confirmado:hover {
+  background-color: #0063c1;
+  cursor: pointer;
+}
 
 .header {
   min-height: 60rem;
@@ -645,5 +662,22 @@ h3 {
   .menu-redes {
     justify-content: flex-end;
   }
+}
+
+.alerta {
+  color: #FFFFFF;
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.alerta__error {
+  background-color: rgb(169, 0, 0);
+  border-left: 0.5rem solid #5d0000;
+}
+.alerta__exito {
+  background-color: #02db02;
+  border-left: 0.5rem solid #018f01;
 }
 /*# sourceMappingURL=app.css.map */

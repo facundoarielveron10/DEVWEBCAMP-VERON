@@ -1,0 +1,20 @@
+@use 'base/variables' as v;
+
+.alerta {
+    color: v.$blanco;
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: v.$bold;
+
+    &__error {
+        background-color: v.$rojo;
+        border-left: .5rem solid darken($color: v.$rojo, $amount: 15%);
+    }
+
+    &__exito {
+        background-color: v.$verde;
+        border-left:.5rem solid darken($color: v.$verde, $amount: 15%);
+    }
+}

@@ -3,23 +3,24 @@
     <!-- Titulo y Descripcion -->
     <h2 class="auth__heading"><?php echo $titulo ?></h2>
     <p class="auth__texto">Registrate en DevWebCamp</p>
-
+    <!-- Alertas -->
+    <?php require_once __DIR__ . "/../templates/alertas.php" ?>
     <!-- Formulario -->
-    <form class="formulario">
+    <form class="formulario" method="POST" action="/registro">
         <!-- Nombre -->
         <div class="formulario__campo">
             <label class="formulario__label" for="nombre">Nombre</label>
-            <input class="formulario__input" type="text" placeholder="Tu Nombre" id="nombre" name="nombre">
+            <input class="formulario__input" type="text" placeholder="Tu Nombre" id="nombre" name="nombre" value="<?php echo $usuario->nombre; ?>">
         </div>
         <!-- Apellido -->
         <div class="formulario__campo">
             <label class="formulario__label" for="apellido">Apellido</label>
-            <input class="formulario__input" type="text" placeholder="Tu Apellido" id="apellido" name="apellido">
+            <input class="formulario__input" type="text" placeholder="Tu Apellido" id="apellido" name="apellido" value="<?php echo $usuario->apellido; ?>">
         </div>
         <!-- Email -->
         <div class="formulario__campo">
             <label class="formulario__label" for="email">Email</label>
-            <input class="formulario__input" type="email" placeholder="Tu Email" id="email" name="email">
+            <input class="formulario__input" type="email" placeholder="Tu Email" id="email" name="email" value="<?php echo $usuario->email; ?>">
         </div>
         <!-- Password -->
         <div class="formulario__campo">
