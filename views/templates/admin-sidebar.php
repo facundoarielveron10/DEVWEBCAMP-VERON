@@ -39,3 +39,7 @@
         </a>
     </nav>
 </aside>
+<!-- Menu de hamburguesa -->
+<div class="dashboard__hamburguesa">
+    <img class="dashboard__hamburguesa--icono" src="/build/img/menu.svg" alt="Menu">
+</div>
