@@ -18,7 +18,7 @@
             <?php
                 include_once __DIR__ .'/templates/admin-sidebar.php';  
             ?>
-
+            <!-- Contenido -->
             <main class="dashboard__contenido">
                 <?php 
                     echo $contenido; 

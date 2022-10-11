@@ -4,11 +4,11 @@ namespace Controllers;
 
 use MVC\Router;
 
-class DashboardController {
+class PonentesController {
     public static function index(Router $router) {
         // Renderizamos la vista
-        $router->render('admin/dashboard/index', [
-            'titulo' => 'Panel de Administracion'
+        $router->render('admin/ponentes/index', [
+            'titulo' => 'Ponentes / Conferencistas'
         ]);
     }
 }
