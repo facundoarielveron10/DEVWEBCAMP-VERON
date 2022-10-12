@@ -419,6 +419,24 @@ h3 {
 .formulario__input--file {
   border: none;
 }
+.formulario__listado {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.formulario__listado > li {
+  cursor: pointer;
+  background-color: #007df4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
 .formulario__submit {
   background-color: #007df4;
   padding: 1.5rem 4rem;
@@ -785,6 +803,7 @@ h3 {
   .dashboard__grid {
     flex-direction: row;
     flex: 1;
+    overflow-y: auto;
   }
 }
 .dashboard__sidebar {
@@ -832,6 +851,7 @@ h3 {
 }
 @media (min-width: 768px) {
   .dashboard__contenido {
+    overflow-y: scroll;
     padding: 1rem 5rem 3rem 5rem;
   }
 }
