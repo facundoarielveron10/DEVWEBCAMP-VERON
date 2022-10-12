@@ -57,7 +57,7 @@
                 <i class="fa-brands fa-facebook"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{facebook}" placeholder="Facebook" value="<?php echo $ponente->facebook ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[facebook]" placeholder="Facebook" value="<?php echo $ponente->facebook ?? ''; ?>">
         </div>
     </div>
     <!-- Twitter -->
@@ -69,7 +69,7 @@
                 <i class="fa-brands fa-twitter"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{twitter}" placeholder="Twitter" value="<?php echo $ponente->twitter ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[twitter]" placeholder="Twitter" value="<?php echo $ponente->twitter ?? ''; ?>">
         </div>
     </div>
     <!-- Youtube -->
@@ -81,7 +81,7 @@
                 <i class="fa-brands fa-youtube"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{youtube}" placeholder="Youtube" value="<?php echo $ponente->youtube ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[youtube]" placeholder="Youtube" value="<?php echo $ponente->youtube ?? ''; ?>">
         </div>
     </div>
     <!-- Instagram -->
@@ -93,7 +93,7 @@
                 <i class="fa-brands fa-instagram"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{instagram}" placeholder="Instagram" value="<?php echo $ponente->instagram ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[instagram]" placeholder="Instagram" value="<?php echo $ponente->instagram ?? ''; ?>">
         </div>
     </div>
     <!-- TikTok -->
@@ -105,7 +105,7 @@
                 <i class="fa-brands fa-tiktok"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{tiktok}" placeholder="TikTok" value="<?php echo $ponente->tiktok ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[tiktok]" placeholder="TikTok" value="<?php echo $ponente->tiktok ?? ''; ?>">
         </div>
     </div>
     <!-- GitHub -->
@@ -117,7 +117,7 @@
                 <i class="fa-brands fa-github"></i>
             </div>
             <!-- Datos -->
-            <input class="formulario__input formulario__input--sociales" type="text" name="redes{github}" placeholder="GitHub" value="<?php echo $ponente->github ?? ''; ?>">
+            <input class="formulario__input formulario__input--sociales" type="text" name="redes[github]" placeholder="GitHub" value="<?php echo $ponente->github ?? ''; ?>">
         </div>
     </div>
 </fieldset>
