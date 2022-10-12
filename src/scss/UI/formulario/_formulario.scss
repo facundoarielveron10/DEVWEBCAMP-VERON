@@ -67,6 +67,19 @@
         }
     }
 
+    &__texto {
+        margin-top: 3rem;
+    }
+
+    &__imagen {
+        max-width: 20rem;
+        
+        img {
+            border-radius: 50%;
+            border: 1px solid v.$azul;
+        }
+    }
+
     &__listado {
         @include m.tags;
     }

@@ -5,12 +5,22 @@
     if (tagsInput) {
         // Seleccionamos todos los divs que contienen los tags
         const tagsDiv = document.querySelector('#tags');
+        
         // Seleccionamos el input hiddent
         const tagsInputHidden = document.querySelector('[name="tags"]');
+        
         // Guardamos las etiquetas en un arreglo
         let tags = [];
+        
+        // Recuperar del input oculto los datos
+        if (tagsInputHidden.value !== '') {
+            tags = tagsInputHidden.value.split(',');
+            mostrarTags();
+        }
+        
         // Escuchar los cambios en el input
         tagsInput.addEventListener('keypress', guardarTag);
+        
         // Mira si el usuario esta escribiendo algo en el input
         function guardarTag(e) {
             if (e.keyCode === 44) {
