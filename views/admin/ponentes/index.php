@@ -43,7 +43,8 @@
                                 Editar
                             </a>
                             <!-- Eliminar -->
-                            <form class="table__formulario">
+                            <form class="table__formulario" method="POST" action="/admin/ponentes/eliminar">
+                                <input type="hidden" name="id" value="<?php echo $ponente->id ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
                                     <!-- Icono Eliminar -->
                                     <i class="fa-solid fa-circle-xmark"></i>

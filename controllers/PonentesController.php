@@ -9,6 +9,11 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PonentesController {
     // Principal
     public static function index(Router $router) {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+
         // Nos traemos todos los ponentes
         $ponentes = Ponente::all();
 
@@ -21,6 +26,11 @@ class PonentesController {
 
     // Crear un Ponente
     public static function crear(Router $router) {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+
         // Guardamos las alertas
         $alertas = [];
 
@@ -89,6 +99,11 @@ class PonentesController {
 
     // Editar un ponente
     public static function editar(Router $router) {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+        
         // Guardamos las alertas
         $alertas = [];
         // Validar el ID
@@ -173,5 +188,29 @@ class PonentesController {
             'ponente' => $ponente,
             'redes' => $redes
         ]);
+    }
+
+    // Eliminar un ponente
+    public static function eliminar() {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+
+        // Leemos los datos enviados
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $ponente = Ponente::find($id);
+
+            if(!isset($ponente)) {
+                header('Location: /admin/ponentes');
+            }
+
+            $resultado = $ponente->eliminar();
+
+            if($resultado) {
+                header('Location: /admin/ponentes');
+            }
+        }
     }
 }
