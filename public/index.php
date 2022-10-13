@@ -35,16 +35,22 @@ $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
 // Area de administracion
+//--- DASHBOARD ---//
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
-
+//-----------------//
+// --- PONENTES ---//
 $router->get('/admin/ponentes', [PonentesController::class, 'index']);
 $router->get('/admin/ponentes/crear', [PonentesController::class, 'crear']);
 $router->post('/admin/ponentes/crear', [PonentesController::class, 'crear']);
 $router->get('/admin/ponentes/editar', [PonentesController::class, 'editar']);
 $router->post('/admin/ponentes/editar', [PonentesController::class, 'editar']);
 $router->post('/admin/ponentes/eliminar', [PonentesController::class, 'eliminar']);
+//-----------------//
 
+// --- EVENTOS --- //
 $router->get('/admin/eventos', [EventosController::class, 'index']);
+$router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
+// ----------------//
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
