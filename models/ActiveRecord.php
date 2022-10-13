@@ -131,6 +131,21 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Paginar los registros
+    public static function paginar($por_pagina, $offset) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT ${por_pagina} OFFSET ${offset}" ;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    // Nos dice el total de registros hay en una tabla
+    public static function total() {
+        $query = "SELECT COUNT(*) FROM " . static::$tabla;
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+        return (int) array_shift($total);
+    }
+
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos

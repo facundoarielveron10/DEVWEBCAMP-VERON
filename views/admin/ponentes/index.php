@@ -60,3 +60,7 @@
         <p class="text-center">No hay Ponentes Aún</p>
     <?php endif; ?>
 </div>
+<!-- Paginacion -->
+<?php
+    echo $paginacion;
+?>

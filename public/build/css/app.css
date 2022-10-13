@@ -975,4 +975,58 @@ h3 {
 .table__accion--eliminar {
   color: rgb(169, 0, 0);
 }
+
+.paginacion {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.paginacion__enlace {
+  color: #007df4;
+  font-size: 2rem;
+}
+.paginacion__enlace--texto {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #007df4;
+}
+.paginacion__enlace--texto:hover {
+  background-color: #007df4;
+  color: #FFFFFF;
+}
+.paginacion__enlace--ultimo, .paginacion__enlace--primero {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1E293B;
+  color: #1E293B;
+}
+.paginacion__enlace--numero {
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--numero {
+    display: inline;
+  }
+}
+.paginacion__enlace--actual {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #1E293B;
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--actual {
+    display: inline;
+  }
+}
 /*# sourceMappingURL=app.css.map */
