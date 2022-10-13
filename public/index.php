@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\APIEventos;
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\DashboardController;
@@ -12,7 +13,7 @@ use Controllers\RegistradosController;
 
 $router = new Router();
 
-
+// ----- PUBLICA -----//
 // Login
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
@@ -33,7 +34,10 @@ $router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 // Confirmación de Cuenta
 $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
+//--------------------//
 
+
+// ----- PRIVADA -----//
 // Area de administracion
 //--- DASHBOARD ---//
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
@@ -50,10 +54,18 @@ $router->post('/admin/ponentes/eliminar', [PonentesController::class, 'eliminar'
 // --- EVENTOS --- //
 $router->get('/admin/eventos', [EventosController::class, 'index']);
 $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
+$router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
 // ----------------//
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+//--------------------//
+
+
+// --- API --- //
+$router->get('/api/eventos-horario', [APIEventos::class, 'index']);
+//-------------//
+
 
 $router->comprobarRutas();

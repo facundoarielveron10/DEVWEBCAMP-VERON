@@ -5,12 +5,12 @@
     <!-- Nombre -->
     <div class="formulario__campo">
         <label class="formulario__label" for="nombre">Nombre Evento</label>
-        <input class="formulario__input" type="text" id="nombre" name="nombre" placeholder="Nombre Evento">
+        <input class="formulario__input" type="text" id="nombre" name="nombre" placeholder="Nombre Evento" value="<?php echo $evento->getNombre(); ?>">
     </div>
     <!-- Descripcion -->
     <div class="formulario__campo">
         <label class="formulario__label" for="descripcion">Descripcion</label>
-        <textarea class="formulario__input" id="descripcion" name="descripcion" placeholder="Descripcion Evento" rows="6"></textarea>
+        <textarea class="formulario__input" id="descripcion" name="descripcion" placeholder="Descripcion Evento" rows="6"><?php echo $evento->getDescripcion(); ?></textarea>
     </div>
     <!-- Categorias -->
     <div class="formulario__campo">
@@ -18,7 +18,7 @@
         <select class="formulario__select" name="categoria_id" id="categoria">
             <option value=""> -- Seleccionar -- </option>
             <?php foreach($categorias as $categoria): ?>
-                <option value="<?php echo $categoria->getId(); ?>"><?php echo $categoria->getNombre(); ?></option>
+                <option <?php echo ($evento->getCategoriaId() === $categoria->getId()) ? 'selected' : ''; ?> value="<?php echo $categoria->getId(); ?>"><?php echo $categoria->getNombre(); ?></option>
             <?php endforeach; ?>
         </select>
     </div>
@@ -33,11 +33,13 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <input type="hidden" name="dia_id" value="">
     </div>
     <!-- Horas -->
     <div class="formulario__campo" id="horas">
         <label class="formulario__label" for="hora">Seleccionar Hora</label>
-        <ul class="horas">
+        <ul id="horas" class="horas">
             <?php foreach($horas as $hora): ?>
                 <li class="horas__hora"><?php echo $hora->getHora(); ?></li>
             <?php endforeach; ?>
@@ -56,6 +58,6 @@
     <!-- Lugares Disponibles -->
     <div class="formulario__campo">
         <label class="formulario__label" for="disponibles">Lugares Disponibles</label>
-        <input class="formulario__input" type="number" min="1" id="disponibles" name="disponibles" placeholder="Ej. 20">
+        <input class="formulario__input" type="number" min="1" id="disponibles" name="disponibles" placeholder="Ej. 20" value="<?php echo $evento->getDisponibles(); ?>">
     </div>
 </fieldset>
