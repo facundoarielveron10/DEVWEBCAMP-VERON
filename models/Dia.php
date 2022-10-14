@@ -8,15 +8,6 @@ class Dia extends ActiveRecord {
     protected static $columnasDB = ['id', 'nombre'];
 
     // Atributos
-    protected $id;
-    protected $nombre;
-
-    // Metodos
-    // Get y Set
-    public function getId() : string {
-        return $this->id;
-    }
-    public function getNombre() : string {
-        return $this->nombre;
-    }
+    public $id;
+    public $nombre;
 }

@@ -516,13 +516,23 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.horas__hora {
+.horas__hora, .horas__hora--deshabilitada, .horas__hora--seleccionada {
   cursor: pointer;
   color: #007df4;
   border: 1px solid #007df4;
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
+}
+.horas__hora--seleccionada {
+  background-color: #007df4;
+  color: #FFFFFF;
+}
+.horas__hora--deshabilitada {
+  cursor: not-allowed;
+  border: 1px solid #64748B;
+  color: #64748B;
+  opacity: 0.5rem;
 }
 
 .header {
@@ -1034,6 +1044,7 @@ h3 {
   border-radius: 0.5rem;
   border: 1px solid #1E293B;
   color: #1E293B;
+  opacity: 0.6;
 }
 .paginacion__enlace--numero {
   font-weight: 700;

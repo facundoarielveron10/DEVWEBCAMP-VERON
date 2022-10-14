@@ -8,14 +8,14 @@ class Evento extends ActiveRecord {
     protected static $columnasDB = ['id', 'nombre', 'descripcion', 'disponibles', 'categoria_id', 'dia_id', 'hora_id', 'ponente_id'];
 
     // Atributos
-    protected $id;
-    protected $nombre;
-    protected $descripcion;
-    protected $disponibles;
-    protected $categoria_id;
-    protected $dia_id;
-    protected $hora_id;
-    protected $ponente_id;
+    public $id;
+    public $nombre;
+    public $descripcion;
+    public $disponibles;
+    public $categoria_id;
+    public $dia_id;
+    public $hora_id;
+    public $ponente_id;
 
     // Constructor
     public function __construct($args = []) {
@@ -55,31 +55,5 @@ class Evento extends ActiveRecord {
         }
 
         return self::$alertas;
-    }
-
-    // Get y Set
-    public function getId() : string {
-        return $this->id;
-    }
-    public function getNombre() : string {
-        return $this->nombre;
-    }
-    public function getDescripcion() : string {
-        return $this->descripcion;
-    }
-    public function getDisponibles() : string {
-        return $this->disponibles;
-    }
-    public function getCategoriaId() : string {
-        return $this->categoria_id;
-    }
-    public function getDiaId() : string {
-        return $this->dia_id;
-    }
-    public function getHoraId() : string {
-        return $this->hora_id;
-    }
-    public function getPonenteId() : string {
-        return $this->ponente_id;
     }
 }
