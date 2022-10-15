@@ -2,10 +2,12 @@
 
 namespace Controllers;
 
+use Classes\Paginacion;
 use Model\Categoria;
 use Model\Dia;
 use Model\Evento;
 use Model\Hora;
+use Model\Ponente;
 use MVC\Router;
 
 class EventosController {
@@ -16,9 +18,39 @@ class EventosController {
             header('Location: /login');
         }
 
+        // Indica la pagina en cual nos encontramos
+        $pagina_actual = $_GET['page'];
+        $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
+
+        // Indica cuantos registros se van a mostrar por pagina
+        $registros_por_pagina = 10;
+
+        // Indica cuantos registros hay en total para calcular las paginas totales
+        $total = Evento::total();
+
+        // Creamos una paginacion
+        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+        // Si la pagina actual no existe o es negativa lo redireccionamos
+        if (!$pagina_actual || $pagina_actual < 1 || $pagina_actual > $paginacion->totalPaginas()) {
+            header('Location: /admin/eventos?page=1');
+        }
+
+        // Nos traemos los eventos correspondientes a cada pagina
+        $eventos = Evento::paginar($registros_por_pagina, $paginacion->offset());
+
+        // Nos traemos los datos del evento
+        foreach ($eventos as $evento) {
+            $evento->categoria = Categoria::find($evento->categoria_id);
+            $evento->dia = Dia::find($evento->dia_id);
+            $evento->hora = Hora::find($evento->hora_id);
+            $evento->ponente = Ponente::find($evento->ponente_id);
+        }
         // Renderizamos la vista
         $router->render('admin/eventos/index', [
-            'titulo' => 'Conferencias y Workshops'
+            'titulo' => 'Conferencias y Workshops',
+            'eventos' => $eventos,
+            'paginacion' => $paginacion->paginacion()
         ]);
     }
 
