@@ -14,7 +14,7 @@ class EventosController {
     // Principal
     public static function index(Router $router) {
         // Protegemos la ruta
-        if (!isAuth()) {
+        if(!isAdmin()) {
             header('Location: /login');
         }
 
@@ -57,7 +57,7 @@ class EventosController {
     // Crear un evento
     public static function crear(Router $router) {
         // Protegemos la ruta
-        if (!isAuth()) {
+        if(!isAdmin()) {
             header('Location: /login');
         }
 
@@ -101,4 +101,91 @@ class EventosController {
             'evento' => $evento
         ]);
     }
+
+    // Edita un evento
+    public static function editar(Router $router) {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+
+        // Guardamos las alertas
+        $alertas = [];
+
+        // Leemos el id del evento de la URL
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        // Si no llega a existir ese ID lo redireccionamos
+        if (!$id) {
+            header('Location: /admin/eventos');
+        }
+
+        // Nos traemos todas las categorias
+        $categorias = Categoria::all();
+        // Nos traemos todos los dias
+        $dias = Dia::all('ASC');
+        // Nos traemos todas las horas
+        $horas = Hora::all('ASC');
+        
+        // Creamos una instancia de evento
+        $evento = Evento::find($id);
+
+        // Si no existe el evento lo redireccionamos
+        if (!$evento) {
+            header('Location: /admin/eventos');
+        }
+
+        // Leemos los datos
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Sincronizamos los datos enviados con el objeto de evento
+            $evento->sincronizar($_POST);
+            // Validamos los datos
+            $alertas = $evento->validar();
+            // Si no hubo problemas de validacion
+            if (empty($alertas)) {
+                $resultado = $evento->guardar();
+
+                // Redireccionamos
+                if ($resultado) {
+                    header('Location: /admin/eventos');
+                }
+            }
+        }
+
+        // Renderizamos la vista
+        $router->render('admin/eventos/editar', [
+            'titulo' => 'Editar evento',
+            'alertas' => $alertas,
+            'categorias' => $categorias,
+            'dias' => $dias,
+            'horas' => $horas,
+            'evento' => $evento
+        ]);
+    }
+
+    // Eliminar un evento
+    public static function eliminar() {
+        // Leemos los datos enviados
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Protegemos la ruta
+            if(!isAdmin()) {
+                header('Location: /login');
+            }
+
+            $id = $_POST['id'];
+            $evento = Evento::find($id);
+
+            if(!isset($evento)) {
+                header('Location: /admin/eventos');
+            }
+
+            $resultado = $evento->eliminar();
+
+            if($resultado) {
+                header('Location: /admin/eventos');
+            }
+        }
+    }
+
 }

@@ -7,6 +7,11 @@ use Model\EventoHorario;
 class APIEventos {
     // Principal
     public static function index() {
+        // Protegemos la ruta
+        if(!isAdmin()) {
+            header('Location: /login');
+        }
+        
         // Leemos de la URL el dia y la categoria
         $dia_id = $_GET['dia_id'] ?? '';
         $categoria_id = $_GET['categoria_id'] ?? '';

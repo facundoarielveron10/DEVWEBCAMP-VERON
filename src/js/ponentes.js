@@ -20,6 +20,20 @@
         // Cada vez que se ingrese algo en el input buscamos un ponente
         ponentesInput.addEventListener('input', buscarPonentes);
 
+        if (ponenteHidden.value) {
+            (async () => {
+                // Nos traemos el ponente correspondiente al id
+                const ponente = await obtenerPonente(ponenteHidden.value);
+
+                // Insertar en el HTML
+                const ponenteDOM = document.createElement('LI');
+                ponenteDOM.classList.add('listado-ponentes__ponente', 'listado-ponentes__ponente--seleccionado');
+                ponenteDOM.textContent = `${ponente.nombre} ${ponente.apellido}`;
+
+                listadoPonentes.appendChild(ponenteDOM);
+            })();
+        }
+
         // Se trae todos los ponentes atraves de una API
         async function obtenerPonentes() {
             // URL para la peticion
@@ -30,6 +44,18 @@
             const resultado = await respuesta.json();
 
             formatearPonentes(resultado);
+        }
+
+        // Se trae un solo ponente atraves de una API
+        async function obtenerPonente(id) {
+            // URL para la peticion
+            const url = `/api/ponente?id=${id}`;
+            
+            // Nos traemos nos resultados
+            const respuesta = await fetch(url);
+            const resultado = await respuesta.json();
+
+            return resultado;
         }
 
         // Formatea los Ponentes, es decir quitarles datos irrelevantes

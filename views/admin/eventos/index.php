@@ -28,13 +28,13 @@
                 <!-- Botones Eliminar y Editar -->
                 <div class="dashboard__contenedor--mobile__botones">
                     <!-- Editar -->
-                    <a class="table__accion table__accion--editar" href="/admin/ponentes/editar?id=<?php echo $evento->id; ?>">
+                    <a class="table__accion table__accion--editar" href="/admin/eventos/editar?id=<?php echo $evento->id; ?>">
                         <!-- Icono Editar -->
-                        <i class="fa-solid fa-user-pen"></i>
+                        <i class="fa-solid fa-pencil"></i>
                         Editar
                     </a>
                     <!-- Eliminar -->
-                    <form class="dashboard__contenedor--mobile__formulario" method="POST" action="/admin/ponentes/eliminar">
+                    <form class="dashboard__contenedor--mobile__formulario" method="POST" action="/admin/eventos/eliminar">
                         <input type="hidden" name="id" value="<?php echo $evento->id ?>">
                         <button class="table__accion table__accion--eliminar" type="submit">
                             <!-- Icono Eliminar -->
@@ -89,13 +89,13 @@
                         <!-- Boton Editar y Boton Eliminar -->
                         <td class="table__td--acciones">
                             <!-- Editar -->
-                            <a class="table__accion table__accion--editar" href="/admin/ponentes/editar?id=<?php echo $evento->id; ?>">
+                            <a class="table__accion table__accion--editar" href="/admin/eventos/editar?id=<?php echo $evento->id; ?>">
                                 <!-- Icono Editar -->
                                 <i class="fa-solid fa-user-pen"></i>
                                 Editar
                             </a>
                             <!-- Eliminar -->
-                            <form class="table__formulario" method="POST" action="/admin/ponentes/eliminar">
+                            <form class="table__formulario" method="POST" action="/admin/eventos/eliminar">
                                 <input type="hidden" name="id" value="<?php echo $evento->id ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
                                     <!-- Icono Eliminar -->

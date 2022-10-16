@@ -212,13 +212,13 @@ class PonentesController {
 
     // Eliminar un ponente
     public static function eliminar() {
-        // Protegemos la ruta
-        if(!isAdmin()) {
-            header('Location: /login');
-        }
-
         // Leemos los datos enviados
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Protegemos la ruta
+            if(!isAdmin()) {
+                header('Location: /login');
+            }
+            
             $id = $_POST['id'];
             $ponente = Ponente::find($id);
 

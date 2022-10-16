@@ -39,7 +39,7 @@
                             <!-- Editar -->
                             <a class="table__accion table__accion--editar" href="/admin/ponentes/editar?id=<?php echo $ponente->id; ?>">
                                 <!-- Icono Editar -->
-                                <i class="fa-solid fa-user-pen"></i>
+                                <i class="fa-solid fa-pencil"></i>
                                 Editar
                             </a>
                             <!-- Eliminar -->

@@ -4,12 +4,6 @@
 
     // Verificamos la existencia de esas horas
     if (horas) {
-        // Buscamos las horas disponibles
-        let busqueda = {
-            categoria_id: '',
-            dia: ''
-        }
-
         // Seleccionamos la categoria
         const categoria = document.querySelector('[name="categoria_id"]');
         // Seleccionamos los dias
@@ -21,6 +15,28 @@
         categoria.addEventListener('change', terminoBusqueda);
         // Guardamos en busqueda el dia
         dias.forEach( dia => dia.addEventListener('change', terminoBusqueda));
+
+        // Buscamos las horas disponibles
+        let busqueda = {
+            categoria_id: +categoria.value || '',
+            dia: +inputHiddenDia.value || ''
+        }
+
+        // Si categoria y dia tiene algo significa que estamos editando
+        if (!Object.values(busqueda).includes('')) {
+            (async () => {
+                await buscarEventos();
+                // Guardamos el id de la hora seleccionada
+                const id = inputHiddenHora.value;
+
+                // Resaltar la hora actual
+                const horaSeleccionada = document.querySelector(`[data-hora-id="${id}"]`);
+                horaSeleccionada.classList.remove('horas__hora--deshabilitada');
+                horaSeleccionada.classList.add('horas__hora--seleccionada');
+
+                horaSeleccionada.onclick = seleccionarHora;
+            })();
+        }
 
         // Guarda los datos seleccionados por el usuario
         function terminoBusqueda(e) {
