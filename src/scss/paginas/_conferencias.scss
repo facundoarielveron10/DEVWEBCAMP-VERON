@@ -12,7 +12,7 @@
         color: v.$azul;
         margin: 5rem 0;
         text-align: left;
-        font-size: clamp(2rem, -.8rem - 8vw, 6rem);
+        font-size: clamp(2rem, -.8rem + 8vw, 6rem);
     }
 
     &__fecha {

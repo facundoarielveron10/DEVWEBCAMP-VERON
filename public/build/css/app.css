@@ -451,7 +451,7 @@ h3 {
   color: #007df4;
   margin: 5rem 0;
   text-align: left;
-  font-size: clamp(2rem, -0.8rem - 8vw, 6rem);
+  font-size: clamp(2rem, -0.8rem + 8vw, 6rem);
 }
 .eventos__fecha {
   color: #64748B;
