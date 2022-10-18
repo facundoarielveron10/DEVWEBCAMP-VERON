@@ -19,7 +19,6 @@
         echo $contenido;
         include_once __DIR__ .'/templates/footer.php'; 
     ?>
-    <script src="/build/js/bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="/build/js/main.min.js" defer></script>
 </body>
 </html>
