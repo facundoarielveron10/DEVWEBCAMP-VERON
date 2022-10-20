@@ -3,8 +3,17 @@
     <div class="header__contenedor">
         <!-- Navegacion -->
         <nav class="header__navegacion">
-            <a href="/registro" class="header__enlace">Registro</a>
-            <a href="/login" class="header__enlace">Iniciar Sesion</a>
+            <?php if(isAuth()): ?>
+                <!-- Administrador -->
+                <a class="header__enlace" href="<?php echo isAdmin() ? '/admin/dashboard' : '/finalizar-registro'; ?>">Administrar</a>
+                <!-- Cerrar Sesion -->
+                <form class="header__form" method="POST" action="/logout">
+                    <input class="header__submit" type="submit" value="Cerrar Sesion">
+                </form>
+            <?php else: ?>
+                <a class="header__enlace" href="/registro">Registrarse</a>
+                <a class="header__enlace" href="/login">Iniciar Sesion</a>
+            <?php endif; ?>
         </nav>
         <!-- Contenido -->
         <div class="header__contenido">
@@ -32,10 +41,10 @@
         </a>
         <!-- Navegacion -->
         <nav class="navegacion">
-            <a href="/devwebcamp" class="navegacion__enlace">Evento</a>
-            <a href="/paquetes" class="navegacion__enlace">Paquetes</a>
-            <a href="/workshops-conferencias" class="navegacion__enlace">Conferencias / Workshops</a>
-            <a href="/registro" class="navegacion__enlace">Comprar Pase</a>
+            <a href="/devwebcamp" class="navegacion__enlace <?php echo paginaActual('/devwebcamp') ? 'navegacion__enlace--actual' : ''; ?>">Evento</a>
+            <a href="/paquetes" class="navegacion__enlace <?php echo paginaActual('/paquetes') ? 'navegacion__enlace--actual' : ''; ?>">Paquetes</a>
+            <a href="/workshops-conferencias" class="navegacion__enlace <?php echo paginaActual('/workshops-conferencias') ? 'navegacion__enlace--actual' : ''; ?>">Conferencias / Workshops</a>
+            <a href="/registro" class="navegacion__enlace <?php echo paginaActual('/registro') ? 'navegacion__enlace--actual' : ''; ?>">Comprar Pase</a>
         </nav>
     </div>
 </div>

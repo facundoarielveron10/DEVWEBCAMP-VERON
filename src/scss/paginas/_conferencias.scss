@@ -24,12 +24,36 @@
         #{$modificador}__heading {
             color: v.$secundario;
         }
+
+        .evento__informacion {
+            background-color: v.$secundario;
+            &:hover {
+                background-color: darken($color: v.$secundario, $amount: 5%);
+            }
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: rgba($color: v.$blanco, $alpha: .5)
     }
 }
 
 .evento {
+    cursor: pointer;
+    user-select: none;
+
     &__hora {
         font-weight: v.$bold;
+    }
+
+    &__nombre {
+        font-size: 1.7rem;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     &__informacion {

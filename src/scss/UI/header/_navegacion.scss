@@ -16,8 +16,13 @@
         text-transform: uppercase;
         text-align: center;
         
-        &:hover {
+        &--actual {
             background-color: v.$blanco;
+            color: v.$azul;
+        }
+
+        &:hover {
+            background-color: darken($color: v.$blanco, $amount: 5%);
             color: v.$azul;
         }
     }

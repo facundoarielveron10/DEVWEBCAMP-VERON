@@ -460,9 +460,33 @@ h3 {
 .eventos--workshops .eventos__heading {
   color: #00c8c2;
 }
+.eventos--workshops .evento__informacion {
+  background-color: #00c8c2;
+}
+.eventos--workshops .evento__informacion:hover {
+  background-color: #00afa9;
+}
+.eventos .swiper-button-next,
+.eventos .swiper-button-prev {
+  color: rgba(255, 255, 255, 0.5);
+}
 
+.evento {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
 .evento__hora {
   font-weight: 700;
+}
+.evento__nombre {
+  font-size: 1.7rem;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .evento__informacion {
   padding: 2rem;
@@ -690,7 +714,7 @@ h3 {
     justify-content: flex-end;
   }
 }
-.header__enlace {
+.header__enlace, .header__submit {
   all: unset;
   cursor: pointer;
   color: #FFFFFF;
@@ -698,8 +722,11 @@ h3 {
   text-transform: uppercase;
   font-weight: 700;
 }
-.header__enlace:hover {
+.header__enlace:hover, .header__submit:hover {
   color: #007df4;
+}
+.header__form {
+  display: flex;
 }
 .header__contenido {
   padding-top: 10rem;
@@ -784,6 +811,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
   font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
 }
 @media (min-width: 1024px) {
@@ -810,8 +838,12 @@ h3 {
   text-transform: uppercase;
   text-align: center;
 }
-.navegacion__enlace:hover {
+.navegacion__enlace--actual {
   background-color: #FFFFFF;
+  color: #007df4;
+}
+.navegacion__enlace:hover {
+  background-color: #f2f2f2;
   color: #007df4;
 }
 
@@ -836,6 +868,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
   font-size: clamp(2rem, -0.8rem + 10vw, 4rem);
 }
 @media (min-width: 1024px) {
@@ -946,6 +979,7 @@ h3 {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 2rem;
+  white-space: nowrap;
   font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
 }
 @media (min-width: 1024px) {
