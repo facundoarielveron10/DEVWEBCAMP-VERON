@@ -123,4 +123,13 @@ class PaginasController {
             'eventos' => $eventos_formateados
         ]);
     }
+
+    // ERROR 404
+    public static function error(Router $router) {
+        
+        // Renderizamos la vista
+        $router->render('/paginas/error', [
+            'titulo' => 'Pagina no encontrada'
+        ]);
+    }
 }

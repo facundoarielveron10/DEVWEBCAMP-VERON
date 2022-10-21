@@ -116,19 +116,25 @@
             font-family: "Font Awesome 6 Brands";
         }
 
-        &[href*="https://github.com"]::before {
+        &[href*="facebook.com"]::before {
+            content: "\f39e";
+        }
+        &[href*="tiktok.com"]::before {
+            content: "\e07b";
+        }
+        &[href*="github.com"]::before {
             content: "\f09b";
         }
-        &[href*="https://instagram.com"]::before {
+        &[href*="instagram.com"]::before {
             content: "\f16d";
         }
-        &[href*="https://youtube.com"]::before {
+        &[href*="youtube.com"]::before {
             content: "\f167";
         }
-        &[href*="https://twitter.com"]::before {
+        &[href*="twitter.com"]::before {
             content: "\f099";
         }
-        &[href*="https://linkedin.com"]::before {
+        &[href*="linkedin.com"]::before {
             content: "\f0e1";
         }
 
@@ -172,6 +178,7 @@
 
     > li {
         cursor: pointer;
+        user-select: none;
         background-color: v.$azul;
         padding: 1rem;
         border-radius: .5rem;

@@ -7,7 +7,7 @@
     <!-- Contenedor -->
     <div class="paquetes__grid">
         <!-- Paquete Gratis -->
-        <div class="paquete">
+        <div data-aos="<?php aos_animacion(); ?>" class="paquete">
             <!-- Nombre -->
             <h3 class="paquete__nombre">Pase Gratis</h3>
             <!-- Lista -->
@@ -18,7 +18,7 @@
             <p class="paquete__precio">$0</p>
         </div>
         <!-- Paquete Presencial -->
-        <div class="paquete">
+        <div data-aos="<?php aos_animacion(); ?>" class="paquete">
             <!-- Nombre -->
             <h3 class="paquete__nombre">Pase Presencial</h3>
             <!-- Lista -->
@@ -34,7 +34,7 @@
             <p class="paquete__precio">$199</p>
         </div>
         <!-- Paquete Virtual -->
-        <div class="paquete">
+        <div data-aos="<?php aos_animacion(); ?>" class="paquete">
             <!-- Nombre -->
             <h3 class="paquete__nombre">Pase Presencial</h3>
             <!-- Lista -->

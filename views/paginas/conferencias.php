@@ -6,7 +6,7 @@
     <p class="agenda__descripcion">Talleres y Conferencias dictados por expertos en Desarrollo Web</p>
 
     <!-- Evento (Conferencias) -->
-    <div class="eventos">
+    <div data-aos="<?php aos_animacion(); ?>"> class="eventos">
         <!-- Titulo -->
         <h3 class="eventos__heading">&lt;Conferencias /></h3>
         
@@ -46,7 +46,7 @@
     </div>
 
     <!-- Evento (Workshops) -->
-    <div class="eventos eventos--workshops">
+    <div data-aos="<?php aos_animacion(); ?>" class="eventos eventos--workshops">
         <!-- Titulo -->
         <h3 class="eventos__heading">&lt;Workshops /></h3>
 

@@ -1,5 +1,6 @@
-import './horas';
-import './ponentes';
-import './responsive';
-import './tags';
-import './slider';
+import './horas.js';
+import './ponentes.js';
+import './responsive.js';
+import './tags.js';
+import './slider.js';
+import './mapa.js';
