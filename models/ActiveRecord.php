@@ -160,8 +160,11 @@ class ActiveRecord {
     }
 
     // Nos dice el total de registros hay en una tabla
-    public static function total() {
+    public static function total($columna = '', $valor = '') {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
+        if ($columna) {
+            $query .= " WHERE ${columna} = ${valor}";
+        }
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
         return (int) array_shift($total);
