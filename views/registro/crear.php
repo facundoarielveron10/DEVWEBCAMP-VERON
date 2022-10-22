@@ -17,6 +17,10 @@
             </ul>
             <!-- Precio -->
             <p class="paquete__precio">$0</p>
+            <!-- Comprar -->
+            <form method="POST" action="/finalizar-registro/gratis">
+                <input class="paquetes__submit" type="submit" value="Inscripcion Gratis">
+            </form>
         </div>
         <!-- Paquete Presencial -->
         <div data-aos="<?php aos_animacion(); ?>" class="paquete">
