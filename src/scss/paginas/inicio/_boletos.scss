@@ -156,3 +156,23 @@
         }
     }
 }
+
+.boleto-cancelar {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+
+    &__boton {
+        cursor: pointer;
+        text-transform: uppercase;
+        padding: 1.4rem;
+        background-color: v.$rojo;
+        color: v.$blanco;
+        border: none;
+        border-radius: .5rem;
+
+        &:hover {
+            background-color: darken($color: v.$rojo, $amount: 10%);
+        }
+    }
+}

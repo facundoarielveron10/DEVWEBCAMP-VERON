@@ -37,6 +37,12 @@
             </ul>
             <!-- Precio -->
             <p class="paquete__precio">$199</p>
+            <!-- Pagar -->
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
         </div>
         <!-- Paquete Virtual -->
         <div data-aos="<?php aos_animacion(); ?>" class="paquete">
@@ -54,3 +60,50 @@
         </div>
     </div>
 </main>
+
+<script src="https://www.paypal.com/sdk/js?client-id=Ae_akJH6B_LBP8J5lGg3i392lxqU1RSMbHZO2fVZbjSM1MJ7TzWWbBW8zUWXSsR9YA3shkTCB9vZrAD1&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":199}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+            const datos = new FormData();
+            datos.append('paquete_id', orderData.purchase_units[0].description);
+            datos.append('pago_id', orderData.purchase_units[0].payments.captures[0].id);
+            
+            fetch('/finalizar-registro/pagar', {
+                method: 'POST',
+                body: datos
+            })
+            .then( respuesta => respuesta.json())
+            .then(resultado => {
+                if (resultado.resultado) {
+                    actions.redirect('http://localhost:3000/finalizar-registro/conferencias');
+                }
+            });
+
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+</script>

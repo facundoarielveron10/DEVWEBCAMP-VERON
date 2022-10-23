@@ -21,4 +21,16 @@
             <p class="boleto__codigo"><?php echo "#" . $registro->token; ?></p>
         </div>
     </div>
+
+    <?php if($registro->paquete_id === '3'): ?>
+        <!-- Boton Cancelar -->
+        <!-- Eliminar -->
+        <form class="boleto-cancelar" method="POST" action="/boleto/cancelar">
+            <button class="boleto-cancelar__boton" type="submit">
+                <!-- Icono Eliminar -->
+                <i class="fa-solid fa-circle-xmark"></i>
+                Cancelar Inscripcion
+            </button>
+        </form>
+    <?php endif; ?>
 </main>

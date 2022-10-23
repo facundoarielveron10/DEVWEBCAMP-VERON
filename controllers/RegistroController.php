@@ -14,6 +14,14 @@ class RegistroController {
         if(!isAuth()) {
             header('Location: /login');
         }
+
+        // Verificar si el usuario ya esta registrado
+        $registro = Registro::where('usuario_id', $_SESSION['id']);
+        
+        // Si el usuario ya esta registrado
+        if (isset($registro) && $registro->paquete_id === "3") {
+            header('Location: /boleto?id=' . urlencode($registro->token));
+        }
         
         // Renderizamos la vista
         $router->render('registro/crear', [
@@ -28,6 +36,14 @@ class RegistroController {
             // Protegemos la ruta
             if(!isAuth()) {
                 header('Location: /login');
+            }
+
+            // Verificar si el usuario ya esta registrado
+            $registro = Registro::where('usuario_id', $_SESSION['id']);
+            
+            // Si el usuario ya esta registrado
+            if (isset($registro) && $registro->paquete_id === "3") {
+                header('Location: /boleto?id=' . urlencode($registro->token));
             }
 
             // Creamos un token unico para el registro
@@ -50,6 +66,42 @@ class RegistroController {
             // Redireccionamos
             if ($resultado) {
                 header('Location: /boleto?id=' . urlencode($registro->token));
+            }
+        }
+    }
+
+    // Inscripcion al boleto gratis
+    public static function pagar() {
+        // Leemos los datos
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Protegemos la ruta
+            if(!isAuth()) {
+                header('Location: /login');
+            }
+
+            // Validar que Post no venga vacio
+            if(empty($_POST)) {
+                echo json_encode([]);
+                return;
+            }
+            
+            // Asignamos los datos del registro
+            $datos = $_POST;
+            $datos['token'] = substr(md5(uniqid(rand(), true)), 0, 8);
+            $datos['usuario_id'] = $_SESSION['id'];
+
+            try {
+                // Creamos el registro
+                $registro = new Registro($datos);
+                
+                // Almacenamos el registro en la Base de Datos
+                $resultado = $registro->guardar();
+
+                echo json_encode($resultado);
+            } catch (\Throwable $th) {
+                echo json_encode([
+                    'resultado' => 'error'
+                ]);
             }
         }
     }
@@ -80,5 +132,34 @@ class RegistroController {
             'titulo' => 'Asistencia a DevWebCamp',
             'registro' => $registro
         ]);
+    }
+
+    // Cancelamos la inscripcion
+    public static function cancelar() {
+        // Leemos los datos
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Protegemos la ruta
+            if(!isAuth()) {
+                header('Location: /login');
+            }
+
+            // Buscamos el registro a eliminar
+            $registro = Registro::where('usuario_id' ,$_SESSION['id']);
+
+            // Si el registro no exite
+            if (isset($registro)) {
+                header('Location: /boleto?id=' . urlencode($registro->token));
+            }
+
+            // Eliminamos el registro
+            $resultado = $registro->eliminar();
+
+            // Redireccionamos
+            if ($resultado) {
+                header('Location: /finalizar-registro');
+            } else {
+                header('Location: /404');
+            }
+        }
     }
 }

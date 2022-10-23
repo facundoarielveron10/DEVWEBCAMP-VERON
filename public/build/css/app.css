@@ -453,7 +453,7 @@ h3 {
 }
 .paquete__precio {
   font-size: 3rem;
-  margin: 3rem 0 0 0;
+  margin: 3rem 0;
   color: #007df4;
   font-weight: 900;
   text-align: center;
@@ -948,6 +948,24 @@ h3 {
     left: calc(100% - 5rem);
     top: calc(50% - 2.5rem);
   }
+}
+
+.boleto-cancelar {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+.boleto-cancelar__boton {
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 1.4rem;
+  background-color: rgb(169, 0, 0);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.5rem;
+}
+.boleto-cancelar__boton:hover {
+  background-color: #760000;
 }
 
 .formulario {
