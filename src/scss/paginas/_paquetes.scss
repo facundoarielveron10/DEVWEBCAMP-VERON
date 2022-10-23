@@ -14,6 +14,7 @@
 
     &__submit {
         @include m.boton(v.$azul, v.$blanco);
+        border-radius: 4rem;
         margin-top: 3rem
     }
 }

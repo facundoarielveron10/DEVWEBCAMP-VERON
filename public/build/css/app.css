@@ -418,6 +418,7 @@ h3 {
   text-align: center;
   width: 100%;
   display: inline-block;
+  border-radius: 4rem;
   margin-top: 3rem;
 }
 .paquetes__submit:hover {
