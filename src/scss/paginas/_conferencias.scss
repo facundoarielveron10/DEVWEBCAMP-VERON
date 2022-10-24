@@ -91,4 +91,15 @@
     &__autor-nombre {
         font-weight: v.$bold;
     }
+
+    &__agregar {
+        @include m.boton(v.$blanco, v.$negro);
+        text-transform: uppercase;
+        margin-top: 1rem;
+
+        &:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
 }

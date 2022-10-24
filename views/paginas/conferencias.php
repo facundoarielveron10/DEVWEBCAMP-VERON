@@ -11,7 +11,7 @@
         <h3 class="eventos__heading">&lt;Conferencias /></h3>
         
         <!-- Fecha -->
-        <p class="evento__fecha">Viernes 5 de Octubre</p>
+        <p class="eventos__fecha">Viernes 5 de Octubre</p>
         <!-- Listado Conferencias (Viernes) -->
         <div class="eventos__listado slider swiper">
             <!-- Slider -->
@@ -51,7 +51,7 @@
         <h3 class="eventos__heading">&lt;Workshops /></h3>
 
         <!-- Fecha -->
-        <p class="evento__fecha">Viernes 5 de Octubre</p>
+        <p class="eventos__fecha">Viernes 5 de Octubre</p>
         <!-- Listado Workshops (Viernes) -->
         <div class="eventos__listado slider swiper">
             <!-- Slider -->
