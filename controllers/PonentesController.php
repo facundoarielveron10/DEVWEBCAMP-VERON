@@ -6,6 +6,7 @@ use Classes\Paginacion;
 use Model\Ponente;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
+use Model\Evento;
 
 class PonentesController {
     // Principal
@@ -219,13 +220,28 @@ class PonentesController {
                 header('Location: /login');
             }
             
+            // Buscamos el ponente por el id
             $id = $_POST['id'];
             $ponente = Ponente::find($id);
 
+            // Nos traemos todos los eventos
+            $eventos = Evento::all();
+
+            // Si no exite el ponente redireccionamos
             if(!isset($ponente)) {
                 header('Location: /admin/ponentes');
             }
 
+
+            // Eliminamos los eventos relacionados con ese ponente
+            if($eventos) {
+                foreach($eventos as $evento) {
+                    if ($evento->ponente_id === $ponente->id) {
+                        $evento->eliminar();
+                    }
+                }
+            }
+            // Eliminamos el ponente
             $resultado = $ponente->eliminar();
 
             if($resultado) {

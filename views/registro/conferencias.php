@@ -60,11 +60,31 @@
     </main>
 
     <!-- Resumen Registro -->
-    <aside class="registro">
+    <aside class="registro registro--pago">
         <!-- Titulo -->
         <h2 class="registro__heading">Tu Registro</h2>
 
         <!-- Resumen -->
         <div class="registro__resumen" id="registro-resumen"></div>
+        
+        <!-- Regalos -->
+        <div class="registro__regalo">
+            <!-- Titulo -->
+            <label class="registro__label" for="regalo"> Selecciona un regalo</label>
+            <!-- Seleccionador -->
+            <select class="registro__select" id="regalo">
+                <option value="">-- Selecciona tu regalo --</option>
+                <?php foreach($regalos as $regalo): ?>
+                    <option value="<?php echo $regalo->id; ?>"><?php echo $regalo->nombre; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        
+        <!-- Enviar Registro -->
+        <form class="formulario" id="registro">
+            <div class="formulario__campo">
+                <input class="formulario__submit formulario__submit--full" type="submit" value="Registrarme">
+            </div>
+        </form>
     </aside>
 </div>
