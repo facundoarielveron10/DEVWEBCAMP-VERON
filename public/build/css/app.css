@@ -422,7 +422,6 @@ h3 {
   text-align: center;
   width: 100%;
   display: inline-block;
-  border-radius: 4rem;
   margin-top: 3rem;
 }
 .paquetes__submit:hover {
@@ -1861,6 +1860,9 @@ h3 {
 }
 .registro__eliminar:hover {
   cursor: pointer;
+}
+.registro__texto {
+  text-align: center;
 }
 .registro__regalo {
   margin-top: 3rem;

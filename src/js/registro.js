@@ -19,6 +19,8 @@ import Swal from "sweetalert2";
         // Agregamos un evento para enviar los datos
         formularioRegistro.addEventListener('submit', submitFormulario);
 
+        // Mostramos los eventos
+        mostrarEventos();
         
         // Selecciona y guarda el evento
         function seleccionarEventos(e) {
@@ -35,7 +37,7 @@ import Swal from "sweetalert2";
                 mostrarEventos();
             } else {
                 Swal.fire({
-                    title: 'Error',
+                    title: 'ERROR',
                     text: 'MAXIMO 5 EVENTOS POR REGISTRO',
                     icon: 'error',
                     confirmButtonText: 'OK'
@@ -73,6 +75,11 @@ import Swal from "sweetalert2";
                     eventoDOM.appendChild(botonEliminar);
                     resumen.appendChild(eventoDOM);
                 });
+            } else {
+                const noRegistro = document.createElement('P');
+                noRegistro.textContent = 'No hay eventos, añade hasta 5 del lado izquierdo';
+                noRegistro.classList.add('registro__texto');
+                resumen.appendChild(noRegistro);
             }
         }
 
@@ -95,7 +102,7 @@ import Swal from "sweetalert2";
             }
         }
 
-        function submitFormulario(e) {
+        async function submitFormulario(e) {
             e.preventDefault();
 
             // Obtener el regalo
@@ -106,12 +113,42 @@ import Swal from "sweetalert2";
         
             if (eventosId.length === 0 || regaloId === '') {
                 Swal.fire({
-                    title: 'Error',
+                    title: 'ERROR',
                     text: 'ELIGE AL MENOS UN EVENTO Y UN REGALO',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
                 return;
+            }
+
+            // FORMDATA
+            const datos = new FormData();
+            datos.append('eventos', eventosId);
+            datos.append('regalo_id', regaloId);
+
+            // Mandamos los datos al Servidor
+            const url = '/finalizar-registro/conferencias';
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: datos
+            });
+
+            // Recibimos los datos
+            const resultado = await respuesta.json();
+            if (resultado.resultado) {
+                Swal.fire({
+                   title: 'REGISTRO EXITOSO',
+                   text: 'TUS CONFERENCIAS SE HAN ALMACENADOS Y TU REGISTRO FUE EXITOSO, TE ESPERAMOS EN DEVWEBCAPM',
+                   icon: 'success',
+                   confirmButtonText: 'OK'
+                }).then( () => location.href = `/boleto?id=${resultado.token}`);
+            } else {
+                Swal.fire({
+                    title: 'ERROR',
+                    text: 'HUBO UN ERROR',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                 }).then( () => location.reload());
             }
         }
         

@@ -43,7 +43,7 @@
                                 Editar
                             </a>
                             <!-- Eliminar -->
-                            <form class="table__formulario" method="POST" action="/admin/ponentes/eliminar">
+                            <form class="table__formulario" id="eliminarPonente" method="POST" action="/admin/ponentes/eliminar">
                                 <input type="hidden" name="id" value="<?php echo $ponente->id ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
                                     <!-- Icono Eliminar -->
@@ -57,7 +57,7 @@
             </tbody>
         </table>
     <?php else: ?>
-        <p class="text-center">No hay Ponentes Aún</p>
+        <?php header('Location: /admin/ponentes/crear'); ?>
     <?php endif; ?>
 </div>
 <!-- Paginacion -->

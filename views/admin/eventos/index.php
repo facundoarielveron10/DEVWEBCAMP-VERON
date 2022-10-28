@@ -109,7 +109,7 @@
             </tbody>
         </table>
     <?php else: ?>
-        <p class="text-center">No hay Eventos Aún</p>
+        <?php header('Location: /admin/eventos/crear'); ?>
     <?php endif; ?>
 </div>
 <!-- Paginacion -->
