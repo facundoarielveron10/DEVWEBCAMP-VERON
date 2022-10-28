@@ -183,6 +183,10 @@
         margin-top: 2rem;
     }
 
+    &__grafica {
+        @include m.contenedor-sm;
+    }
+
     &__hamburguesa {
         @include m.tablet {
             display: none;

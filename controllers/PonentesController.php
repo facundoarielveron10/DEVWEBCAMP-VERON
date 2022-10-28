@@ -14,6 +14,7 @@ class PonentesController {
         // Protegemos la ruta
         if(!isAdmin()) {
             header('Location: /login');
+            return;
         }
 
         // Indica la pagina en cual nos encontramos
