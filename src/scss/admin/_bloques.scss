@@ -40,6 +40,11 @@
 
     &__texto {
         margin: 1rem 0;
+        font-size: 2rem;
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+        }
 
         &--cantidad {
             margin-top: 5rem;

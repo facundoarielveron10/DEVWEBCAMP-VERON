@@ -315,6 +315,7 @@ html {
 body {
   font-family: "Outfit", sans-serif;
   font-size: 1.8rem;
+  overflow-x: none;
 }
 
 a {
@@ -1590,15 +1591,15 @@ h3 {
   padding: 2rem;
   border-radius: 1rem;
 }
-.dashboard__contenedor--eventos {
+.dashboard__contenedor--eventos, .dashboard__contenedor--registrados, .dashboard__contenedor--ponentes {
   display: none;
 }
-@media (min-width: 768px) {
-  .dashboard__contenedor--eventos {
+@media (min-width: 1024px) {
+  .dashboard__contenedor--eventos, .dashboard__contenedor--registrados, .dashboard__contenedor--ponentes {
     display: flex;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .dashboard__contenedor--mobile {
     display: none;
   }
@@ -1834,6 +1835,13 @@ h3 {
 }
 .bloque__texto {
   margin: 1rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .bloque__texto {
+    text-align: left;
+  }
 }
 .bloque__texto--cantidad {
   margin-top: 5rem;

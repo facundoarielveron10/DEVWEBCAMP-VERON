@@ -126,15 +126,17 @@
         padding: 2rem;
         border-radius: 1rem;
 
-        &--eventos {
+        &--eventos,
+        &--registrados,
+        &--ponentes {
             display: none;
-            @include m.tablet {
+            @include m.desktop {
                 display: flex;
             }
         }
 
         &--mobile {
-            @include m.tablet {
+            @include m.desktop {
                 display: none;
             }
 

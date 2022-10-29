@@ -12,9 +12,9 @@
             <?php foreach($registros as $registro): ?>
                 <!-- Registro -->
                 <div class="bloque__contenido">
-                    <p class="bloque__texto">
+                    <li class="bloque__texto">
                         <?php echo $registro->usuario->nombre . " " . $registro->usuario->apellido;?>
-                    </p>
+                    </li>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -33,9 +33,9 @@
             <?php foreach($menosDisponibles as $evento): ?>
                 <!-- Evento -->
                 <div class="bloque__contenido">
-                    <p class="bloque__texto">
+                    <li class="bloque__texto">
                         <?php echo $evento->nombre . ' - ' . $evento->disponibles . ' Disponibles'; ?>
-                    </p>
+                    </li>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -47,9 +47,9 @@
             <?php foreach($masDisponibles as $evento): ?>
                 <!-- Evento -->
                 <div class="bloque__contenido">
-                    <p class="bloque__texto">
+                    <li class="bloque__texto">
                         <?php echo $evento->nombre . ' - ' . $evento->disponibles . ' Disponibles'; ?>
-                    </p>
+                    </li>
                 </div>
             <?php endforeach; ?>
         </div>

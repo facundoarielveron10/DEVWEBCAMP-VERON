@@ -8,7 +8,46 @@
     </a>
 </div>
 <!-- Listado de Ponentes -->
-<div class="dashboard__contenedor">
+<div class="dashboard__contenedor--mobile">
+    <?php if(!empty($ponentes)): ?>
+        <!-- Registrados -->
+        <?php foreach($ponentes as $ponente): ?>
+            <!-- Nombre del Ponente -->
+            <h3 class="dashboard__contenedor--mobile__h3"><?php echo $ponente->nombre . ' ' . $ponente->apellido; ?></h3>
+            <!-- Datos del Ponente -->
+            <div class="dashboard__contenedor--mobile__evento">
+                <!-- Ubicacion -->
+                <label class="dashboard__contenedor--mobile__label">Ubicacion </label>
+                <p class="dashboard__contenedor--mobile__p"><?php echo $ponente->ciudad . ', ' . $ponente->pais; ?></p>
+                <!-- Tags -->
+                <label class="dashboard__contenedor--mobile__label">Conocimientos</label>
+                <p class="dashboard__contenedor--mobile__p"><?php echo str_replace(',', ' - ', $ponente->tags); ?></p>
+                <!-- Boton Editar y Boton Eliminar -->
+                <div class="dashboard__contenedor--mobile__botones">
+                    <!-- Editar -->
+                    <a class="table__accion table__accion--editar" href="/admin/ponentes/editar?id=<?php echo $ponente->id; ?>">
+                        <!-- Icono Editar -->
+                        <i class="fa-solid fa-pencil"></i>
+                        Editar
+                    </a>
+                    <!-- Eliminar -->
+                    <form class="dashboard__contenedor--mobile__formulario" id="eliminarPonente" method="POST" action="/admin/ponentes/eliminar">
+                        <input type="hidden" name="id" value="<?php echo $ponente->id ?>">
+                        <button class="table__accion table__accion--eliminar" type="submit">
+                            <!-- Icono Eliminar -->
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            Eliminar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p class="text-center">No hay Registrados Aún</p>
+    <?php endif; ?>
+</div>
+<!-- Listado de Ponentes -->
+<div class="dashboard__contenedor dashboard__contenedor--ponentes">
     <?php if(!empty($ponentes)): ?>
         <!-- Tabla -->
         <table class="table">
