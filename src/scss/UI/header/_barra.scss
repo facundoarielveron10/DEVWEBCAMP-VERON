@@ -2,7 +2,11 @@
 @use 'base/variables' as v;
 
 .barra {
+    padding: 1rem;
     background-color: v.$azul;
+    @include m.tablet {
+        padding: 0;
+    }
 
     &__contenido {
         @include m.contenedor;

@@ -306,6 +306,7 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   height: 100%;
+  overflow-x: hidden;
 }
 
 *, *:before, *:after {
@@ -315,7 +316,7 @@ html {
 body {
   font-family: "Outfit", sans-serif;
   font-size: 1.8rem;
-  overflow-x: none;
+  overflow-x: hidden;
 }
 
 a {
@@ -1109,9 +1110,16 @@ h3 {
 }
 
 .acciones {
-  margin-top: 3rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .acciones {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 .acciones__enlace {
   color: #1a1b15;
@@ -1271,7 +1279,13 @@ h3 {
 }
 
 .barra {
+  padding: 1rem;
   background-color: #007df4;
+}
+@media (min-width: 768px) {
+  .barra {
+    padding: 0;
+  }
 }
 .barra__contenido {
   width: min(95%, 160rem);
@@ -1303,10 +1317,12 @@ h3 {
 .navegacion {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
 @media (min-width: 1024px) {
   .navegacion {
     flex-direction: row;
+    gap: 0;
   }
 }
 .navegacion__enlace {
