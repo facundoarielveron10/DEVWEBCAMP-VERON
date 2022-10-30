@@ -1,5 +1,5 @@
 src/
-node_modules
+node_modules/
 vendor/
 gulpfile.js
 package.json
