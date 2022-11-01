@@ -17,16 +17,21 @@ class Router
         $this->postRoutes[$url] = $fn;
     }
 
-    public function comprobarRutas()
-    {
+    public function comprobarRutas() {
+        session_start();
 
-        $url_actual = $_SERVER['PATH_INFO'] ?? '/';
+        if (isset($_SERVER['PATH_INFO'])) {
+            $currentUrl = $_SERVER["PATH_INFO"] ?? "/";
+        } else {
+            $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
+        }
+        
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
-            $fn = $this->getRoutes[$url_actual] ?? null;
+            $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
-            $fn = $this->postRoutes[$url_actual] ?? null;
+            $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
         if ( $fn ) {
