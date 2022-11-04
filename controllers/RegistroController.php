@@ -137,7 +137,7 @@ class RegistroController {
         $usuario_id = $_SESSION['id'];
         $registro = Registro::where('usuario_id', $usuario_id);
 
-        // Si no es el plan virtualm redireccionamos
+        // Si no es el plan presencial redireccionamos
         if (isset($registro) && $registro->paquete_id === '2') {
             header('Location: /boleto?id=' . urlencode($registro->token));
             return;
@@ -150,7 +150,7 @@ class RegistroController {
         }
 
         // Redireccionamos a boleto virtual en caso de haber finalizado su registro
-        if(isset($registro->regalo_id) && $registro->paquete_id === '1') {
+        if($registro->registro === '1' && $registro->paquete_id === '1') {
             header('Location: /boleto?id=' . urlencode($registro->token));
             return;
         }
@@ -255,6 +255,8 @@ class RegistroController {
 
             // Almacenar el regalo
             $registro->sincronizar(['regalo_id' => $_POST['regalo_id']]);
+            // Confirmamos que finalizo el registro
+            $registro->registro = '1';
             $resultado = $registro->guardar();
 
             // Si no hubo problemas en la validaciones

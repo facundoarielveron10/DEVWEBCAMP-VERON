@@ -29,6 +29,7 @@
                 <li class="paquete__elemento">Acceso a las Grabaciones</li>
                 <li class="paquete__elemento">Camisa del Evento</li>
                 <li class="paquete__elemento">Comida y Bebida</li>
+                <li class="paquete__elemento">Regalo a Eleccion</li>
             </ul>
             <!-- Precio -->
             <p class="paquete__precio">$199</p>
@@ -43,6 +44,7 @@
                 <li class="paquete__elemento">Pase por 2 dias</li>
                 <li class="paquete__elemento">Enlace a Talleres y Conferencias</li>
                 <li class="paquete__elemento">Acceso a las Grabaciones</li>
+                <li class="paquete__elemento">Regalo Stickers</li>
             </ul>
             <!-- Precio -->
             <p class="paquete__precio">$49</p>
