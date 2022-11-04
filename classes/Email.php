@@ -52,7 +52,7 @@ class Email {
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.io';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Port = 587;
         $mail->Username = 'facundoarielveron10@gmail.com';
