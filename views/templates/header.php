@@ -44,7 +44,11 @@
             <a href="/devwebcamp" class="navegacion__enlace <?php echo paginaActual('/devwebcamp') ? 'navegacion__enlace--actual' : ''; ?>">Evento</a>
             <a href="/paquetes" class="navegacion__enlace <?php echo paginaActual('/paquetes') ? 'navegacion__enlace--actual' : ''; ?>">Paquetes</a>
             <a href="/workshops-conferencias" class="navegacion__enlace <?php echo paginaActual('/workshops-conferencias') ? 'navegacion__enlace--actual' : ''; ?>">Conferencias / Workshops</a>
-            <a href="/registro" class="navegacion__enlace <?php echo paginaActual('/registro') ? 'navegacion__enlace--actual' : ''; ?>">Comprar Pase</a>
+            <?php if(isAuth() || isAdmin()): ?>
+                <a href="/finalizar-registro" class="navegacion__enlace <?php echo paginaActual('/finalizar-registro') ? 'navegacion__enlace--actual' : ''; ?>">Comprar Pase</a>
+            <?php else: ?>
+                <a href="/registro" class="navegacion__enlace <?php echo paginaActual('/registro') ? 'navegacion__enlace--actual' : '' ?>">Comprar Pase</a>
+            <?php endif; ?>
         </nav>
     </div>
 </div>
